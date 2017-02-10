@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.4;
+  padding: 5px;
+}
+
+.messages {
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.messages:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.message {
+  padding: 5px 15px;
+  margin: 1px;
+  border-radius: 1em;
+  clear: both;
+}
+
+.message[data-sent="1"] {
+  background-color: rgb(43, 154, 253);
+  color: rgb(255, 255, 255);
+  float: right;
+}
+
+.message[data-sent="0"] {
+  background-color: rgb(229, 229, 234);
+  float: left;
+}
