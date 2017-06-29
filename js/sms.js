@@ -1,6 +1,6 @@
 (function() {
 
-	var 
+	var
 	createNode = function(type) {
 
 		return document.createElement(type);
@@ -26,9 +26,11 @@
 	setAttribute = function(node, key, value) {
 
 		node.setAttribute(key, value);
-		return node;		
+		return node;
 
-	},
+	};
+
+	var
 	iPhone = function(messages, recipient) {
 
 		this.node = createNode("div");
@@ -52,7 +54,7 @@
 		setTimeout(function() {
 
 			setHtml(node, messsage[2]);
-			
+
 			setAttribute(node, "data-sent", messsage[1]);
 			addClass(node, "message");
 
@@ -83,7 +85,7 @@
 		[5, 1, "hi there"],
 		[2, 1, "how are you?"],
 		[5, 0, "not bad thanks"],
-		[1.5, 0, "you?"],
+		[1, 0, "you?"],
 		[3, 1, "good thanks"],
 		[5, 0, "been up to much?"],
 		[3, 1, "not much"],
@@ -102,7 +104,7 @@
 		[3, 0, "yeah"],
 		[6, 1, "but php is shit, right?"],
 		[2, 0, "well"],
-		[3, 0, "depends who you're asking really"]
+		[3, 0, "depends who you're asking"]
 	], "Mark");
 
 	append(phone.node, document.body);
