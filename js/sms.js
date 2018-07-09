@@ -72,7 +72,6 @@
 		}, (messsage[0]*1000)/phone.speed);
 
 	};
-
 	iPhone.prototype.addConversation = function(conversation) {
 
 		return this.conversations.push(conversation);
