@@ -72,9 +72,9 @@
 		}, (messsage[0]*1000)/phone.speed);
 
 	};
-	iPhone.prototype.addConversation = function(conversation) {
+	iPhone.prototype.addConversation = function(recipient, messages) {
 
-		return this.conversations.push(conversation);
+		return this.conversations.push(new Conversation(recipient, messages));
 
 	};
 
@@ -93,7 +93,7 @@
 	Conversation.prototype.message = 0;
 
 	phone = new iPhone();
-	phone.addConversation(new Conversation('Mark', [
+	phone.addConversation('Mark', [
 		// [delay, sent, message],
 		[3, 0, 'hello'],
 		[5, 1, 'hi there'],
@@ -119,7 +119,7 @@
 		[6, 1, 'but php is shit, right?'],
 		[2, 0, 'well'],
 		[3, 0, 'depends who you\'re asking']
-	]));
+	]);
 
 	append(phone.node, document.body);
 
