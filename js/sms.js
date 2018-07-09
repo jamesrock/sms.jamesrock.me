@@ -31,11 +31,11 @@
 	};
 
 	var
-	iPhone = function(messages, recipient) {
+	iPhone = function() {
 
 		this.node = createNode("div");
-		this.messages = messages;
-		this.recipient = recipient;
+
+		this.conversations = [];
 
 		addClass(this.node, "messages");
 
@@ -44,11 +44,13 @@
 	};
 	iPhone.prototype.message = 0;
 	iPhone.prototype.speed = 2;
+	iPhone.prototype.conversation = 0;
 	iPhone.prototype.start = function() {
 
 		var
 		phone = this,
-		messsage = phone.messages[phone.message],
+		conversation = this.conversations[this.conversation],
+		messsage = conversation.messages[phone.message],
 		node = createNode("div");
 
 		setTimeout(function() {
@@ -62,7 +64,7 @@
 
 			document.body.scrollTop = (document.body.clientHeight-window.innerHeight);
 
-			if(phone.moreMessages()) {
+			if(conversation.moreMessages()) {
 				phone.message ++;
 				phone.start();
 			}
@@ -73,13 +75,28 @@
 		}, (messsage[0]*1000)/phone.speed);
 
 	};
-	iPhone.prototype.moreMessages = function() {
+
+	iPhone.prototype.addConversation = function(conversation) {
+
+		return this.conversations.push(conversation);
+
+	};
+
+	var
+	Conversation = function(recipient, messages) {
+
+		this.recipient = recipient;
+		this.messages = messages;
+
+	};
+	Conversation.prototype.moreMessages = function() {
 
 		return this.message<(this.messages.length-1);
 
 	};
 
-	phone = new iPhone([
+	phone = new iPhone();
+	phone.addConversation(new Conversation("Mark", [
 		// [delay, sent, message],
 		[3, 0, "hello"],
 		[5, 1, "hi there"],
@@ -105,7 +122,7 @@
 		[6, 1, "but php is shit, right?"],
 		[2, 0, "well"],
 		[3, 0, "depends who you're asking"]
-	], "Mark");
+	]);
 
 	append(phone.node, document.body);
 
